@@ -34,7 +34,7 @@ class TaskController extends Controller
         $validated['is_completed'] = $validated['is_completed'] ?? false;
         $task = Task::create($validated);
 
-        return redirect()->route('index')->name('tasks.index');
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
     public function show(Task $task)
@@ -52,7 +52,7 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'body' => 'required|string',
+            'description' => 'required|string',
         ]);
 
         $task = Task::findOrFail($id);
