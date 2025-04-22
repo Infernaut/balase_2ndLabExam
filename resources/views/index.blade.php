@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Description</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -25,8 +26,10 @@
                     @foreach ($tasks as $task)
                     <tr>
                         <td>{{ $task->title }}</td>
+                        <td>{{ $task->description }}</td>
                         <td>
-                            <a href="{{ route('tasks.show', $task->task_id) }}" class="btn btn-info btn-sm">View</a> <a href="{{ route('tasks.edit', $task->task_id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('tasks.show', $task->task_id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('tasks.edit', $task->task_id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('tasks.destroy', $task->task_id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
